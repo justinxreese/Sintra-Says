@@ -5,24 +5,14 @@
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js'></script> 
     <script type='text/javascript'> 
       //<![CDATA[
-          $(document).ready(locateUser);
-          function locateUser(){
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(a) {
-                    var lat = a.coords.latitude;
-                    var lng = a.coords.longitude;
-                    $('#pictures').load('nearby/'+lat+','+lng);
-                }, function(a) {
-                    alert("could not find your location!");
-                });
-            }
-            else {
-                alert("Your browser does not support geo location, please try using another browser.");
-            }
+          $('#say_button').click(saySomethin);
+          function saySomethin(){
+            $('#confirmation').load('say/'+$('#say_field').val()+'');
           }
       //]]>
     </script> 
   </head> 
 <body>
 <%= yield %>
+<div id="confirmation"></div>
 </body>
