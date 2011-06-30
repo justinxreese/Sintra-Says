@@ -1,7 +1,8 @@
 require 'sinatra'
 
 get '/' do
-  "Hello World!"
+  @phrase = "Hello, World!"
+  erb :form
 end
 
 get '/say/:words' do

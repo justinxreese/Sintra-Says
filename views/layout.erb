@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html> 
+  <head> 
+    <title>Sinatra-Says</title> 
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js'></script> 
+    <script type='text/javascript'> 
+      //<![CDATA[
+          $(document).ready(locateUser);
+          function locateUser(){
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(a) {
+                    var lat = a.coords.latitude;
+                    var lng = a.coords.longitude;
+                    $('#pictures').load('nearby/'+lat+','+lng);
+                }, function(a) {
+                    alert("could not find your location!");
+                });
+            }
+            else {
+                alert("Your browser does not support geo location, please try using another browser.");
+            }
+          }
+      //]]>
+    </script> 
+  </head> 
+<body>
+<%= yield %>
+</body>
